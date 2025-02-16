@@ -1,10 +1,33 @@
-import pandas as pd
+import pandas as pd #importa a biblioteca pandas
 
-loja={
-    'Produtos':['Celular','Fone de ouvido','Teclado','Mouse'],
-    'Quantidade':[10,20,10,6],
-    'Preço':[3000,150,60,60]
-}
+estoque=[] #Cria uma lista para depois adicionar um dicionario com chave e valores
 
-df=pd.DataFrame(loja)
-print(df)
+while True:
+    print('1. Adicionar produtos no estoque.')
+    print('2. Exibir estoque. ')
+    print('3. Sair')
+    
+    op = int(input('O que deseja? '))
+    
+    if op == 1:
+        nome=str(input('Digite o nome do produto: '))
+        quantidade=int(input('Digite quantos produtos quer adicionar: '))
+        preco=float(input('Digite o preço do produto: '))
+        estoque.append({
+            'Nome': nome,
+            'Quantidade': quantidade,
+            'Preço': preco
+        }) #Adiciona os produtos com suas respectivas informações
+    
+    elif op == 2:
+        if estoque:
+            df=pd.DataFrame(estoque) #Cria o data frame dos produtos
+            print(df)
+        else:
+            print('Estoque vazio!')
+    
+    elif op == 3:
+        break
+
+    else:
+        print('Ação inválida.')
